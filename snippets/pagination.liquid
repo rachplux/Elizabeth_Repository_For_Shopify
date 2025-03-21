@@ -1,0 +1,22 @@
+{% if pagination.pages > 0 %}
+    <nav role="navigation" class="flex justify-center my-8">
+        {% if pagination.previous %}
+            <a href="{{ pagination.previous.url }}"  class="border border-gray-600 hover:bg-gray-600 hover:text-white px-8 py-3 mx-1 rounded-sm font-medim"> {{ pagination.previous.title }} </a>
+        {% endif %}
+
+        {% comment %} THE PAGE NUMBERS {% endcomment %}
+        {% for part in pagination.parts %}
+            {% if part.is_link %}
+                <a href="{{ part.url }}" class="border border-gray-600 hover:bg-gray-600 hover:text-white px-8 py-3 mx-1 rounded-sm font-medim"> {{ part.title }} </a>
+            {% else %}
+                <span class="border bg-gray-600 text-white px-8 py-3 mx-1 rounded-sm font-medim">{{ part.title }}</span>                
+            {% endif %}
+            
+        {% endfor %}
+
+        {% if pagination.next %}
+            <a href="{{ pagination.next.url }}"  class="border border-gray-600 hover:bg-gray-600 hover:text-white px-8 py-3 mx-1 rounded-sm font-medim"> {{ pagination.next.title }} </a>
+        {% endif %}
+    </nav>
+{% endif %}
+

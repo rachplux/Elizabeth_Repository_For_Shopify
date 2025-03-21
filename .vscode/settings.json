@@ -1,0 +1,11 @@
+{
+	"prettier.tabWidth": 4,
+	"prettier.useTabs": true,
+	"editor.tabSize":4,
+	"editor.insertSpaces": false,
+	"editor.wordWrap": "on",
+	"[liquid]": {
+		"editor.formatOnSave": true,
+	},
+	"html.format.wrapAttributes": "aligned-multiple"
+}
