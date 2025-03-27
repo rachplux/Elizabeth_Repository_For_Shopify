@@ -10,7 +10,7 @@
 {
 	"sections": {
 		"template": {
-			"type": "template-collection-1"
+			"type": "template-collection"
 		}
 	},
 	"order": ["template"]
