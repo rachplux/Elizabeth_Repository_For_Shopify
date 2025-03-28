@@ -7,9 +7,5 @@
 	"[liquid]": {
 		"editor.formatOnSave": true,
 	},
-	"html.format.wrapAttributes": "aligned-multiple",
-	"[liquid-css]": {
-		"editor.defaultFormatter": "sissel.shopify-liquid",
-		"editor.formatOnSave": true
-	}
+	"html.format.wrapAttributes": "aligned-multiple"
 }

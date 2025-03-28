@@ -44,7 +44,7 @@
           {% if article.image %}
             <img
               class="w-full h-80 md:h-96 object-cover object-center p-5"
-              src=" {{ article.image | image_url: 'master' }} "
+              src=" {{ article.image | img_url: 'master' }} "
               alt="{{ article.image.alt }}">
           {% else %}
             {% assign placeholder_image = 'lifestyle-2' %}
@@ -93,11 +93,10 @@
             {% endfor %}
 
             {% comment %} {% if paginate.pages > 1 %}
-                                                                      {{ paginate | default_pagination }}
-                                                            {% endif %} {% endcomment %}
+              {{ paginate | default_pagination }}
+            {% endif %} {% endcomment %}
             <div class="max-w-6xl mx-auto">
-              {% render 'pagination'
-                , pagination: paginate %}
+                {% render 'pagination', pagination:paginate %}
             </div>
 
           {% endpaginate %}
@@ -227,8 +226,7 @@
           "id": "enable_author",
           "default": false,
           "label": "Display Author Name"
-        },
-        {
+        }, {
           "type": "checkbox",
           "id": "enable_published_date",
           "default": true,
@@ -255,8 +253,7 @@
           "type": "feature_image",
           "name": "Thumbnail",
           "limit": 1
-        },
-        {
+        }, {
           "type": "article_content",
           "name": "Content",
           "limit": 1
