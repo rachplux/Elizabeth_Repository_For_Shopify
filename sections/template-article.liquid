@@ -93,10 +93,11 @@
             {% endfor %}
 
             {% comment %} {% if paginate.pages > 1 %}
-              {{ paginate | default_pagination }}
-            {% endif %} {% endcomment %}
+                            {{ paginate | default_pagination }}
+                        {% endif %} {% endcomment %}
             <div class="max-w-6xl mx-auto">
-                {% render 'pagination', pagination:paginate %}
+              {% render 'pagination'
+                , pagination: paginate %}
             </div>
 
           {% endpaginate %}
@@ -108,7 +109,7 @@
 
     <div id="comment_form" class="mb-8">
       {% form 'new_comment'
- 
+
         , article %}
         <div class="flex-1 mx-auto items-center justify-center max-w-4xl px-4">
           {% if form.errors %}
@@ -226,7 +227,8 @@
           "id": "enable_author",
           "default": false,
           "label": "Display Author Name"
-        }, {
+        },
+        {
           "type": "checkbox",
           "id": "enable_published_date",
           "default": true,
@@ -253,7 +255,8 @@
           "type": "feature_image",
           "name": "Thumbnail",
           "limit": 1
-        }, {
+        },
+        {
           "type": "article_content",
           "name": "Content",
           "limit": 1
