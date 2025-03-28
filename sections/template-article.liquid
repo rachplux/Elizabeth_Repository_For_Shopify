@@ -93,8 +93,8 @@
             {% endfor %}
 
             {% comment %} {% if paginate.pages > 1 %}
-                                          {{ paginate | default_pagination }}
-                                    {% endif %} {% endcomment %}
+                                                                      {{ paginate | default_pagination }}
+                                                            {% endif %} {% endcomment %}
             <div class="max-w-6xl mx-auto">
               {% render 'pagination'
                 , pagination: paginate %}
