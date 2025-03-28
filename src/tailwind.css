@@ -1,5 +1,7 @@
 @import "tailwindcss"
 
+/* 以下是V3的callout，V4已棄用(deprecated) */
+
 /* @tailwind base;
 @tailwind components;
 @tailwind utilities; */
