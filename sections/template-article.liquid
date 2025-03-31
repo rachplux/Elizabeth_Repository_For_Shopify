@@ -44,7 +44,7 @@
           {% if article.image %}
             <img
               class="w-full h-80 md:h-96 object-cover object-center p-5"
-              src=" {{ article.image | image_url: 'master' }} "
+              src=" {{ article.image | image_url: width: 1024 }} "
               alt="{{ article.image.alt }}">
           {% else %}
             {% assign placeholder_image = 'lifestyle-2' %}
@@ -93,8 +93,8 @@
             {% endfor %}
 
             {% comment %} {% if paginate.pages > 1 %}
-                            {{ paginate | default_pagination }}
-                        {% endif %} {% endcomment %}
+                                          {{ paginate | default_pagination }}
+                                    {% endif %} {% endcomment %}
             <div class="max-w-6xl mx-auto">
               {% render 'pagination'
                 , pagination: paginate %}
@@ -109,7 +109,7 @@
 
     <div id="comment_form" class="mb-8">
       {% form 'new_comment'
-
+ 
         , article %}
         <div class="flex-1 mx-auto items-center justify-center max-w-4xl px-4">
           {% if form.errors %}
