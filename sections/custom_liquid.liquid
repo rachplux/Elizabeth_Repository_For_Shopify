@@ -1,0 +1,33 @@
+<div class="flex flex-col items-center my-8">
+	{% if section.settings.title %}
+		<div class="text-3xl font-medium my-8 md:my-16">
+			{{ section.settings.title }}
+		</div>
+	{% endif %}
+  {{ section.settings.custom_liquid }}
+</div>
+
+
+{% schema %}
+  {
+    "name": "Custom Liquid",
+    "tag": "section",
+    "settings": [
+		{
+		"type": "text",
+		"id": "title",
+		"label": "Title",
+		},
+      	{
+        "type": "liquid",
+        "id": "custom_liquid",
+        "label": "Custom Liquid"
+      	}
+    ],
+    "presets": [
+      {
+        "name": "Custom Liquid"
+      }
+    ]
+  }
+{% endschema %}
