@@ -10,7 +10,11 @@ module.exports = {
 	], // Look into layout folder, and find file ends with .liquid
 
   theme: {
-    extend: {},
+    extend: {
+		height: {
+			"94": '22rem'
+		}
+	},
   },
   plugins: [],
 };
