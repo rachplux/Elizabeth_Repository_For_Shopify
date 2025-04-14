@@ -5,6 +5,8 @@
 
 <script src='https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js'></script>
 
+{% assign selected_variant = product.selected_or_first_available_variant %}
+
 <style>
 	.swiper-button-prev,
 	.swiper-button-next {
@@ -60,63 +62,64 @@
 		</div>
 
 		<div class='product--information sticky top-5 p-2'>
-			{%- form 'product', product -%}
-				<input type='hidden' name='id' value='{{ product.selected_or_first_available_variant.id }}'>
+			{% form 'product', product %}
+				<input type='hidden' name='id' value='{{ selected_variant.id }}'>
 				<div class='my-3'>
-					<span class='text-xs text-gray-500'>
-						{{ product.vendor }}
-					</span>
+					<span class='text-xs text-gray-500'>{{ product.vendor }}</span>
 				</div>
+
 				<div class='my-3'>
-					<h1 class='text-3xl text-gray-900'>
-						{{ product.title }}
-					</h1>
+					<h1 class='text-3xl text-gray-900'>{{ product.title }}</h1>
 				</div>
+
 				<div class='my-3'>
-					{%- assign product_price = product.selected_or_first_available_variant -%}
 					<span class='text-base text-gray-500 line-through'>
-						{{- product_price.compare_at_price | money }}
+						{{- selected_variant.compare_at_price | money -}}
 					</span>
-					<span class='text-lg text-gray-900'>{{ product_price.price | money }}</span>
-					{%- if product_price.price < product_price.compare_at_price -%}
+					<span class='text-lg text-gray-900'>{{ selected_variant.price | money }}</span>
+
+					{% if selected_variant.price < selected_variant.compare_at_price %}
 						<span class='px-5 py-1 text-sm font-bold bg-red-500 rounded-full text-white mx-4'>Sale</span>
-					{%- endif -%}
+					{% endif %}
 				</div>
+
 				<div class='my-3'>
-					{%- unless product.has_only_default_variant -%}
-						<div data-url='{{ product.url }}' data-section='{{ section.id }}'>
-							{%- for option in product.options_with_values -%}
-								<label for='option-{{ section.id }}-{{ forloop.index0 }}'>{{ option.name }}</label>
+					{% unless product.has_only_default_variant %}
+						<div data-url='{{ product.url}}' data-section='{{ section.id }}'>
+							{% for option in product.options_with_values %}
+								<label for='Option-{{ section.id }}-{{ forloop.index0 }}'>{{ option.name }}</label>
+
 								<div class='my-2'>
 									<select
-										name='option[{{ option.name | escape }}]'
+										name='options[{{ option.name | escape }}]'
 										id='Option-{{ section.id }}-{{ forloop.index0 }}'
 										class='w-full border py-3 px-3'
 									>
 										{% for value in option.values %}
 											<option
 												value='{{ value | escape }}'
-												{%- if option.selected_value == value -%}
+												{% if option.selected_value == value %}
 													selected='selected'
-												{%- endif -%}
+												{% endif %}
 											>
 												{{ value }}
 											</option>
 										{% endfor %}
 									</select>
 								</div>
-							{%- endfor -%}
+							{% endfor %}
 						</div>
-					{%- endunless -%}
+					{% endunless %}
 				</div>
 
 				<div class='my-3'>
 					<label for='Quantity-{{ section.id }}'>Quantity</label>
+
 					<div class='my-2'>
 						<input
 							type='number'
 							name='quantity'
-							id='quantity-{{ section.id }}'
+							id='Quantity-{{ section.id }}'
 							value='1'
 							min='1'
 							class='w-full border px-3 py-3'
@@ -133,18 +136,18 @@
 						type='submit'
 						name='add'
 						class='w-full px-6 py-4 bg-gray-900 text-white hover:bg-gray-700 rounded-sm my-2'
-						{%- if product.selected_or_first_available_variant == false -%}
+						{% if selected_variant.available == false %}
 							disabled
-						{%- endif -%}
+						{% endif %}
 					>
-						{%- if product.selected_or_first_available_variant.available == false -%}
+						{% if selected_variant.available == false %}
 							Sold out
-						{%- else -%}
+						{% else %}
 							Add to cart
-						{%- endif -%}
+						{% endif %}
 					</button>
 				</div>
-			{%- endform -%}
+			{% endform %}
 		</div>
 	</div>
 </div>
