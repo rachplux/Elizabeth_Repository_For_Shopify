@@ -9,9 +9,9 @@
   </div>
   <div class="my-4">
     {% if section.settings.button_url == blank %}
-      {% assign shop.url = shop.secure_url %}
+      {% assign renamed_variable_shop_2e_url = shop.secure_url %}
     {% else %}
-      {% assign shop.url = section.settings.button_url %}
+      {% assign renamed_variable_shop_2e_url = section.settings.button_url %}
     {% endif %}
     <a href="{{ shop.url }}" class="px-4 inline py-2 text-base font-medium shadow bg-green-600 hover:bg-green-800 text-white rounded-full">{{ section.settings.button_label }}</a>
   </div>
@@ -46,4 +46,16 @@
       }
     ]
   }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% assign shop.url = shop.secure_url %}"
+  to: "{% assign renamed_variable_shop_2e_url = shop.secure_url %}"
+  position: 327..386
+- from: "{% assign shop.url = section.settings.button_url %}"
+  to: "{% assign renamed_variable_shop_2e_url = section.settings.button_url %}"
+  position: 410..481
+{%- endcomment -%}
